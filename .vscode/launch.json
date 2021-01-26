@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    {
+      "name": "Debug UWP",
+      "cwd": "${workspaceFolder}",
+      "type": "reactnative",
+      "request": "launch",
+      "platform": "windows"
+    },
+    {
+      "name": "Debug Android Hermes - Experimental",
+      "cwd": "${workspaceFolder}",
+      "type": "reactnativedirect",
+      "request": "launch",
+      "platform": "android"
+    }
+  ]
+}
