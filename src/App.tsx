@@ -1,16 +1,19 @@
-import React from 'react';
-import {StatusBar, Text, View} from 'react-native';
+import * as React from 'react';
+import {SafeAreaView, Text, View} from 'react-native';
+import tailwind from 'tailwind-rn';
 
 const App = () => {
   return (
     <>
-      <StatusBar />
-      <View style={{flex: 1, backgroundColor: 'grey'}}>
-        <View style={{flex: 1, backgroundColor: 'red'}}>
-          <Text>aaa</Text>
+      <SafeAreaView style={tailwind('h-full')}>
+        <View style={tailwind('pt-12 items-center')}>
+          <View style={tailwind('rounded-full py-3 px-6 bg-blue-200')}>
+            <Text style={tailwind('text-blue-800 font-semibold')}>
+              Hello Tailwind
+            </Text>
+          </View>
         </View>
-        <View style={{height: 100, backgroundColor: 'green'}} />
-      </View>
+      </SafeAreaView>
     </>
   );
 };

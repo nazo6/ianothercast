@@ -1,11 +1,17 @@
 {
   "configurations": [
     {
-      "name": "Debug UWP",
+      "name": "Launch UWP",
       "cwd": "${workspaceFolder}",
       "type": "reactnative",
       "request": "launch",
       "platform": "windows"
+    },
+    {
+      "name": "Attach",
+      "cwd": "${workspaceFolder}",
+      "type": "reactnative",
+      "request": "attach",
     },
     {
       "name": "Debug Android Hermes - Experimental",

@@ -11,10 +11,13 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "autoprefixer": "^10.2.4",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-track-player": "^1.2.3",
-    "react-native-windows": "^0.63.0-0"
+    "react-native-windows": "^0.63.0-0",
+    "tailwind-rn": "^3.0.0",
+    "tailwindcss": "^2.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
