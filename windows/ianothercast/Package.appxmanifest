@@ -4,7 +4,7 @@
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" IgnorableNamespaces="uap mp uap3">
 
-  <Identity Name="9e35f90e-01a6-46ec-9e9b-1ee49961a90a" Publisher="CN=nazo" Version="1.0.0.0" />
+  <Identity Name="ianothercast" Publisher="CN=nazo" Version="0.1.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="9e35f90e-01a6-46ec-9e9b-1ee49961a90a" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
