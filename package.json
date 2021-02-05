@@ -11,11 +11,15 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.13.4",
     "autoprefixer": "^10.2.4",
+    "history": "^5.0.0",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-track-player": "^1.2.3",
     "react-native-windows": "^0.63.0-0",
+    "recoil": "^0.1.2",
+    "rocon": "^1.2.1",
     "tailwind-rn": "^3.0.0",
     "tailwindcss": "^2.0.2"
   },
@@ -28,6 +32,7 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^6.5.1",
     "metro-react-native-babel-preset": "^0.59.0",
+    "react-devtools": "^4.10.1",
     "typescript": "^3.8.3"
   }
 }

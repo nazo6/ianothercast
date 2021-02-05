@@ -1,21 +1,78 @@
+import LoginPage from './pages/LoginPage';
 import * as React from 'react';
-import {SafeAreaView, Text, View} from 'react-native';
-import {tw} from 'tailwind';
+import { useEffect, useState } from 'react';
+import { Text } from 'react-native';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { Redirect } from 'rocon/lib/react';
+import Rocon, { useRoutes } from 'rocon/react';
+import { getStatus } from './api/auth';
+import { authState, loginState } from './stores/app';
+import MainPage from './pages/MainPage';
+
+const rootRoutes = Rocon.Path()
+  .exact({ action: () => <RedirectRoot /> })
+  .route('app', (route) => route.action(() => <RedirectApp />))
+  .route('login', (route) => route.action(() => <RedirectLogin />));
+const RootRoutesComponent = () => {
+  return useRoutes(rootRoutes);
+};
+
+const RedirectRoot = () => {
+  const login = useRecoilValue(loginState);
+  console.log(login.status);
+  return login.status === 'OK' ? (
+    <Redirect route={rootRoutes._.app} />
+  ) : (
+    <Redirect route={rootRoutes._.login} />
+  );
+};
+const RedirectLogin = () => {
+  const setAuthState = useSetRecoilState(authState);
+  const [login, setLogin] = useRecoilState(loginState);
+  const goApp = (token: string, userId: string) => {
+    setAuthState({ token, userId });
+    setLogin({ status: 'OK' });
+  };
+  return login.status !== 'OK' ? (
+    <LoginPage goApp={goApp} />
+  ) : (
+    <Redirect route={rootRoutes._.app} />
+  );
+};
+const RedirectApp = () => {
+  const login = useRecoilValue(loginState);
+  return login.status === 'OK' ? (
+    <MainPage />
+  ) : (
+    <Redirect route={rootRoutes._.login} />
+  );
+};
 
 const App = () => {
-  return (
-    <>
-      <SafeAreaView style={tw('h-full')}>
-        <View style={tw('pt-12 items-center')}>
-          <View style={tw('rounded-3xl py-3 px-6 bg-blue-200')}>
-            <Text style={tw('text-blue-800 font-semibold')}>
-              Hello Tailwind
-            </Text>
-          </View>
-        </View>
-      </SafeAreaView>
-    </>
-  );
+  const setLoggedIn = useSetRecoilState(loginState);
+  const [authData, setAuthData] = useRecoilState(authState);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const f = async () => {
+      if (authData) {
+        const res = await getStatus(authData.token, authData.userId);
+        if (res.authenticated) {
+          setLoggedIn({ status: 'OK' });
+          setAuthData({ token: res.user.token, userId: res.user.user_id });
+          setIsLoading(false);
+        } else {
+          setLoggedIn({ status: 'Error', message: res });
+          console.log(res);
+          setIsLoading(false);
+        }
+      } else {
+        setLoggedIn({ status: 'Error', message: 'a' });
+      }
+    };
+    f();
+  }, []);
+  return isLoading ? <Text>Loading</Text> : <RootRoutesComponent />;
 };
 
 export default App;
