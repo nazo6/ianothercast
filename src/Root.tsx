@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SafeAreaView } from 'react-native';
+import { View } from 'react-native';
 import { tw } from 'tailwind';
 import { RoconRoot } from 'rocon/react';
 import App from './App';
@@ -12,13 +12,13 @@ const Root = () => {
   }, []);
   return (
     <>
-      <SafeAreaView style={tw('h-full')}>
+      <View style={tw('h-full')}>
         <RoconRoot history={history}>
           <RecoilRoot>
             <App />
           </RecoilRoot>
         </RoconRoot>
-      </SafeAreaView>
+      </View>
     </>
   );
 };

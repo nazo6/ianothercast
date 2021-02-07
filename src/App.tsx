@@ -8,6 +8,7 @@ import Rocon, { useRoutes } from 'rocon/react';
 import { getStatus } from './api/auth';
 import { authState, loginState } from './stores/app';
 import MainPage from './pages/MainPage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const rootRoutes = Rocon.Path()
   .exact({ action: () => <RedirectRoot /> })
@@ -50,13 +51,18 @@ const RedirectApp = () => {
 
 const App = () => {
   const setLoggedIn = useSetRecoilState(loginState);
-  const [authData, setAuthData] = useRecoilState(authState);
+  const setAuthData = useSetRecoilState(authState);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const f = async () => {
-      if (authData) {
-        const res = await getStatus(authData.token, authData.userId);
+      const localAuthData = await AsyncStorage.getItem('app-auth');
+      if (localAuthData) {
+        const parsedAuthData = JSON.parse(localAuthData);
+        const res = await getStatus(
+          parsedAuthData.token,
+          parsedAuthData.userId,
+        );
         if (res.authenticated) {
           setLoggedIn({ status: 'OK' });
           setAuthData({ token: res.user.token, userId: res.user.user_id });
@@ -68,6 +74,7 @@ const App = () => {
         }
       } else {
         setLoggedIn({ status: 'Error', message: 'a' });
+        setIsLoading(false);
       }
     };
     f();
