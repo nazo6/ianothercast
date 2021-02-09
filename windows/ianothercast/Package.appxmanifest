@@ -1,12 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
-  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" IgnorableNamespaces="uap mp uap3">
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  IgnorableNamespaces="uap mp">
 
-  <Identity Name="ianothercast" Publisher="CN=nazo" Version="0.1.0.0" />
+  <Identity
+    Name="2043c6c3-5a80-46bc-9543-bfcbdafb8354"
+    Publisher="CN=nazo"
+    Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="9e35f90e-01a6-46ec-9e9b-1ee49961a90a" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="2043c6c3-5a80-46bc-9543-bfcbdafb8354" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>ianothercast</DisplayName>
@@ -23,8 +28,16 @@
   </Resources>
 
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ianothercast.App">
-      <uap:VisualElements DisplayName="ianothercast" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="ianothercast" BackgroundColor="transparent">
+    <Application
+      Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="ianothercast.App">
+      <uap:VisualElements
+        DisplayName="ianothercast"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png"
+        Description="ianothercast"
+        BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
@@ -33,6 +46,5 @@
 
   <Capabilities>
     <Capability Name="internetClient" />
-    <uap3:Capability Name="backgroundMediaPlayback"/>
   </Capabilities>
 </Package>
