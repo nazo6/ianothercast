@@ -2,5 +2,6 @@
   "tailwindCSS.experimental.classRegex": [
     "tw\\('([^'\\)]*)",
     "tw\\(\"([^\"\\)]*)"
-  ]
+  ],
+  "files.eol": "\n"
 }
